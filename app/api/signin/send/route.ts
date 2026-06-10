@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     console.log("[SIGNIN] Sending OTP to existing user:", email);
 
     const { data, error } = await resend.emails.send({
-      from: "FIFAWCPREDICT <noreply@fifawcpredict.com>",
+      from: "FIFAWCPREDICT <onboarding@resend.dev>",
       to: email,
       subject: "Your FIFAWCPREDICT sign-in code",
       html: `

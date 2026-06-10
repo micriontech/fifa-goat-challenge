@@ -3,11 +3,8 @@ import { Resend } from "resend";
 import { generateOTP, storeOTP } from "@/lib/otp";
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  console.log("[OTP] Request received");
-
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
     const { email, name, phone, goatPick } = body;
 
@@ -28,7 +25,7 @@ export async function POST(req: NextRequest) {
     // NOTE: free-tier Resend only delivers to the account owner's email
     // (micriontechnology@gmail.com). To send to any address, verify a
     // domain at resend.com/domains and change from to noreply@yourdomain.com
-    const fromAddress = "FIFAWCPREDICT <noreply@fifawcpredict.com>";
+    const fromAddress = "FIFAWCPREDICT <onboarding@resend.dev>";
     console.log("[OTP] Sending from:", fromAddress);
     console.log("[OTP] Calling Resend API…");
 
