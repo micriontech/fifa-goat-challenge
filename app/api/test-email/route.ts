@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   console.log("\n[TEST-EMAIL] Firing test email");
   console.log("[TEST-EMAIL] RESEND_API_KEY set:", !!process.env.RESEND_API_KEY);
   console.log("[TEST-EMAIL] Key prefix:", process.env.RESEND_API_KEY?.slice(0, 8));

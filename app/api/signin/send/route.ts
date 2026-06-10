@@ -3,9 +3,8 @@ import { Resend } from "resend";
 import { generateOTP, storeOTP } from "@/lib/otp";
 import { getUserByEmail } from "@/lib/googleSheets";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const { email } = await req.json();
     if (!email) return NextResponse.json({ error: "Email required" }, { status: 400 });
