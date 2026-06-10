@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { getTotalVoters } from "@/lib/googleSheets";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const count = await getTotalVoters();

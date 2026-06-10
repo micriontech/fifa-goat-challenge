@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPlayers } from "@/lib/googleSheets";
+
+export const dynamic = "force-dynamic";
 import { PLAYERS } from "@/lib/players";
 
 export async function GET() {

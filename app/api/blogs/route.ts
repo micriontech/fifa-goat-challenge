@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { getBlogs } from "@/lib/googleSheets";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const blogs = await getBlogs();

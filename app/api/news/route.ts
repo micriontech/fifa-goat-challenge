@@ -48,7 +48,7 @@ function categorize(text: string): string {
   return "General";
 }
 
-export const revalidate = 600; // 10-minute ISR cache
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const feeds = [
