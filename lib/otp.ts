@@ -1,9 +1,11 @@
 import { Redis } from "@upstash/redis";
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-});
+function getRedis() {
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  });
+}
 
 interface OTPEntry {
   otp: string;
@@ -23,16 +25,17 @@ export async function storeOTP(
   otp: string,
   userData?: OTPEntry["userData"]
 ): Promise<void> {
-  await redis.set(`otp:${email}`, { otp, userData }, { ex: 600 }); // 10-min TTL
+  await getRedis().set(`otp:${email}`, { otp, userData }, { ex: 600 });
 }
 
 export async function verifyOTP(
   email: string,
   otp: string
 ): Promise<{ valid: boolean; userData?: OTPEntry["userData"] }> {
+  const redis = getRedis();
   const entry = await redis.get<OTPEntry>(`otp:${email}`);
   if (!entry) return { valid: false };
   if (entry.otp !== otp) return { valid: false };
-  await redis.del(`otp:${email}`); // single-use
+  await redis.del(`otp:${email}`);
   return { valid: true, userData: entry.userData };
 }
