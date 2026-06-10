@@ -1,0 +1,97 @@
+
+> goat-challenge@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1709ms
+ ○ Compiling / ...
+ ✓ Compiled / in 4.9s (1429 modules)
+ GET / 200 in 5673ms
+ ✓ Compiled in 800ms (708 modules)
+ ○ Compiling /leaderboard ...
+ ✓ Compiled /leaderboard in 2.6s (1421 modules)
+ GET /leaderboard 200 in 2876ms
+ ○ Compiling /api/voters ...
+ ✓ Compiled /api/voters in 1916ms (1910 modules)
+ ✓ Compiled (1912 modules)
+ GET /api/voters 200 in 5309ms
+ GET /api/players 200 in 5335ms
+ GET /api/voters 200 in 308ms
+ GET /api/players 200 in 297ms
+ GET /api/voters 200 in 300ms
+ GET /api/voters 200 in 277ms
+ ✓ Compiled /api/vote in 474ms (1914 modules)
+ POST /api/vote 200 in 2062ms
+ POST /api/vote 200 in 536ms
+ POST /api/vote 200 in 507ms
+ POST /api/vote 200 in 479ms
+ POST /api/vote 200 in 506ms
+ POST /api/vote 200 in 501ms
+ POST /api/vote 200 in 393ms
+ POST /api/vote 200 in 560ms
+ POST /api/vote 200 in 551ms
+ POST /api/vote 200 in 436ms
+ POST /api/vote 200 in 435ms
+ POST /api/vote 200 in 503ms
+ POST /api/vote 200 in 456ms
+ POST /api/vote 200 in 465ms
+ POST /api/vote 200 in 456ms
+ POST /api/vote 200 in 433ms
+ POST /api/vote 200 in 432ms
+ POST /api/vote 200 in 470ms
+ POST /api/vote 200 in 433ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 585ms (1943 modules)
+ GET /favicon.ico 200 in 714ms
+ ✓ Compiled /api/otp/send in 476ms (1958 modules)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[OTP] Request received
+[OTP] Target email: micriontechnology@gmail.com
+[OTP] Name: Acquaint Capital
+[OTP] RESEND_API_KEY set: true
+[OTP] Key prefix: re_e2gsa
+[OTP] Generated OTP: 393833 (stored in memory)
+[OTP] Sending from: FIFAWCPREDICT <noreply@fifawcpredict.com>
+[OTP] Calling Resend API…
+[OTP] ✅ Email sent! Resend ID: ba377c77-2121-4247-9186-029edb0cab68
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ POST /api/otp/send 200 in 894ms
+ ✓ Compiled /api/otp/verify in 330ms (1929 modules)
+ POST /api/otp/verify 400 in 501ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[OTP] Request received
+[OTP] Target email: micriontechnology@gmail.com
+[OTP] Name: Acquaint Capital
+[OTP] RESEND_API_KEY set: true
+[OTP] Key prefix: re_e2gsa
+[OTP] Generated OTP: 275192 (stored in memory)
+[OTP] Sending from: FIFAWCPREDICT <noreply@fifawcpredict.com>
+[OTP] Calling Resend API…
+[OTP] ✅ Email sent! Resend ID: 9a290750-16a6-418f-b831-e2ca868b4390
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ POST /api/otp/send 200 in 221ms
+ POST /api/otp/verify 200 in 384ms
+ ✓ Compiled /api/players in 338ms (1931 modules)
+ ✓ Compiled (1933 modules)
+ GET /api/voters 200 in 1143ms
+ GET /api/players 200 in 1248ms
+ GET /api/voters 200 in 277ms
+ GET /api/players 200 in 248ms
+ GET /api/voters 200 in 423ms
+ GET /api/voters 200 in 223ms
+ GET /api/voters 200 in 355ms
+ GET /api/players 200 in 396ms
+ GET /api/voters 200 in 231ms
+ GET /api/players 200 in 258ms
+ GET /api/voters 200 in 276ms
+ GET /api/voters 200 in 242ms
+ ✓ Compiled in 1856ms (1435 modules)
+ ✓ Compiled in 1008ms (1435 modules)

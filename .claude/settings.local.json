@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Out-Null *)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/api/players\" -UseBasicParsing -TimeoutSec 8 | Select-Object -ExpandProperty Content | ConvertFrom-Json | Select-Object -ExpandProperty players | Select-Object id, name, totalWins | Format-Table -AutoSize)",
+      "PowerShell(Read-Host *)",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3000/api/players\" -UseBasicParsing -TimeoutSec 12; $data = $r.Content | ConvertFrom-Json; $data.players | Select-Object id, name, era, totalWins | Format-Table -AutoSize)",
+      "PowerShell(Start-Sleep -Seconds 3; $r = Invoke-WebRequest -Uri \"http://localhost:3000/api/init\" -UseBasicParsing -TimeoutSec 20; $r.Content)",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3000/api/players\" -UseBasicParsing -TimeoutSec 10; \\($r.Content | ConvertFrom-Json\\).players | Where-Object { $_.id -eq \"messi\" -or $_.id -eq \"ronaldo\" } | Select-Object id, totalWins, totalAppearances | Format-Table -AutoSize)"
+    ]
+  }
+}
