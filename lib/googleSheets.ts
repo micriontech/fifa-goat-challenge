@@ -1,14 +1,33 @@
 import { google } from "googleapis";
 
+// Normalize a PEM private key to valid 64-char-line format.
+// Handles: literal \n, actual newlines, or a single-line blob with no newlines.
+function normalizePem(key: string): string {
+  const raw = key.replace(/\\n/g, "\n");
+  const body = raw
+    .replace(/-----BEGIN PRIVATE KEY-----/g, "")
+    .replace(/-----END PRIVATE KEY-----/g, "")
+    .replace(/[\r\n\s]/g, "");
+  const lines = body.match(/.{1,64}/g) ?? [];
+  return `-----BEGIN PRIVATE KEY-----\n${lines.join("\n")}\n-----END PRIVATE KEY-----\n`;
+}
+
 function getAuth() {
-  const privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(
-    /\\n/g,
-    "\n"
-  );
+  let clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || "";
+  let privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(/\\n/g, "\n");
+
+  if (process.env.GOOGLE_CREDENTIALS_JSON) {
+    try {
+      const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
+      clientEmail = creds.client_email || clientEmail;
+      privateKey = creds.private_key || privateKey;
+    } catch {}
+  }
+
   return new google.auth.GoogleAuth({
     credentials: {
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: privateKey,
+      client_email: clientEmail,
+      private_key: normalizePem(privateKey),
     },
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
