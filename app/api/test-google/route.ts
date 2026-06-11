@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 function pemToBuffer(pem: string): ArrayBuffer {
   const body = pem
     .replace(/\\n/g, "\n")
+    .replace(/^["']+|["']+$/g, "")
     .replace(/-----BEGIN PRIVATE KEY-----/g, "")
     .replace(/-----END PRIVATE KEY-----/g, "")
     .replace(/[\r\n\s]/g, "");
@@ -23,7 +24,7 @@ export async function GET() {
 
   // Step 2: extract key
   let clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || "";
-  let privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(/\\n/g, "\n");
+  let privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(/^["']+|["']+$/g, "").replace(/\\n/g, "\n");
   if (process.env.GOOGLE_CREDENTIALS_JSON) {
     try {
       const c = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
