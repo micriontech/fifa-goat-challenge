@@ -28,19 +28,28 @@ export async function storeOTP(
   await getRedis().set(`otp:${email}`, { otp, userData }, { ex: 600 });
 }
 
-export async function verifyOTP(
+// Checks OTP without deleting — safe to call before committing the signup
+export async function checkOTP(
   email: string,
   otp: string
 ): Promise<{ valid: boolean; userData?: OTPEntry["userData"] }> {
   const redis = getRedis();
   const entry = await redis.get<OTPEntry>(`otp:${email}`);
-  console.log("[VERIFY-OTP] entry from Redis:", JSON.stringify(entry));
-  console.log("[VERIFY-OTP] otp received:", otp, "type:", typeof otp);
+  console.log("[CHECK-OTP] entry:", JSON.stringify(entry), "received:", otp);
   if (!entry) return { valid: false };
-  if (entry.otp !== otp) {
-    console.log("[VERIFY-OTP] mismatch — stored:", entry.otp, "received:", otp);
-    return { valid: false };
-  }
-  await redis.del(`otp:${email}`);
+  if (entry.otp !== otp) return { valid: false };
   return { valid: true, userData: entry.userData };
+}
+
+export async function consumeOTP(email: string): Promise<void> {
+  await getRedis().del(`otp:${email}`);
+}
+
+export async function verifyOTP(
+  email: string,
+  otp: string
+): Promise<{ valid: boolean; userData?: OTPEntry["userData"] }> {
+  const result = await checkOTP(email, otp);
+  if (result.valid) await consumeOTP(email);
+  return result;
 }
