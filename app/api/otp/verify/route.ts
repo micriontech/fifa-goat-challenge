@@ -6,14 +6,18 @@ function generateReferralId() {
   return "BO" + Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const { email, otp } = await req.json();
+    console.log("[OTP-VERIFY] email:", email, "otp:", otp);
     if (!email || !otp) {
       return NextResponse.json({ error: "Email and OTP required" }, { status: 400 });
     }
 
     const result = await verifyOTP(email, otp);
+    console.log("[OTP-VERIFY] result:", JSON.stringify(result));
     if (!result.valid) {
       return NextResponse.json({ error: "Invalid or expired OTP" }, { status: 400 });
     }

@@ -34,8 +34,13 @@ export async function verifyOTP(
 ): Promise<{ valid: boolean; userData?: OTPEntry["userData"] }> {
   const redis = getRedis();
   const entry = await redis.get<OTPEntry>(`otp:${email}`);
+  console.log("[VERIFY-OTP] entry from Redis:", JSON.stringify(entry));
+  console.log("[VERIFY-OTP] otp received:", otp, "type:", typeof otp);
   if (!entry) return { valid: false };
-  if (entry.otp !== otp) return { valid: false };
+  if (entry.otp !== otp) {
+    console.log("[VERIFY-OTP] mismatch — stored:", entry.otp, "received:", otp);
+    return { valid: false };
+  }
   await redis.del(`otp:${email}`);
   return { valid: true, userData: entry.userData };
 }
