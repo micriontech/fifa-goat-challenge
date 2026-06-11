@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { updatePlayerWin, updatePlayerAppearance } from "@/lib/googleSheets";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const { winnerId, loserId } = await req.json();

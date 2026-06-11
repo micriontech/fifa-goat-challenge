@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -79,7 +79,6 @@ export default function SignInPage() {
     <div className="min-h-screen flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-sm">
 
-        {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/">
             <span className="text-2xl font-black tracking-tight">
@@ -95,7 +94,7 @@ export default function SignInPage() {
           {step === "email" ? (
             <>
               <div className="text-center mb-6">
-                <div className="text-4xl mb-3">ðŸ‘¤</div>
+                <div className="text-4xl mb-3">&#x1F464;</div>
                 <h1 className="text-2xl font-black text-white">Sign In</h1>
                 <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
                   Enter your registered email to continue
@@ -126,7 +125,7 @@ export default function SignInPage() {
                     {error.includes("GOAT Challenge") && (
                       <div className="mt-2">
                         <Link href="/" className="font-bold underline" style={{ color: "#D4AF37" }}>
-                          Take the GOAT Challenge â†’
+                          Take the GOAT Challenge &#x2192;
                         </Link>
                       </div>
                     )}
@@ -139,7 +138,7 @@ export default function SignInPage() {
                   className="btn-gold w-full mt-1"
                   style={{ padding: "14px 0", opacity: loading ? 0.6 : 1 }}
                 >
-                  {loading ? "Sending codeâ€¦" : "Send Sign-In Code â†’"}
+                  {loading ? "Sending code&hellip;" : "Send Sign-In Code &#x2192;"}
                 </button>
               </form>
 
@@ -153,7 +152,7 @@ export default function SignInPage() {
           ) : (
             <>
               <div className="text-center mb-6">
-                <div className="text-4xl mb-3">ðŸ“§</div>
+                <div className="text-4xl mb-3">&#x2709;&#xFE0F;</div>
                 <h1 className="text-2xl font-black text-white">
                   {userName ? `Welcome back, ${userName.split(" ")[0]}!` : "Check Your Email"}
                 </h1>
@@ -165,7 +164,7 @@ export default function SignInPage() {
 
               {devOtpHint && (
                 <div className="mb-4 rounded-xl p-3" style={{ background: "rgba(212,175,55,0.12)", border: "1px solid rgba(212,175,55,0.4)" }}>
-                  <p className="text-xs font-bold mb-1" style={{ color: "#D4AF37" }}>âš ï¸ Email blocked (Resend trial mode)</p>
+                  <p className="text-xs font-bold mb-1" style={{ color: "#D4AF37" }}>&#x26A0;&#xFE0F; Email blocked (Resend trial mode)</p>
                   <p className="text-xs mb-1" style={{ color: "rgba(255,255,255,0.6)" }}>Use this code:</p>
                   <p className="text-2xl font-black tracking-widest" style={{ color: "#D4AF37" }}>{devOtpHint}</p>
                 </div>
@@ -203,7 +202,7 @@ export default function SignInPage() {
                   className="btn-gold w-full"
                   style={{ padding: "14px 0", opacity: loading || otp.length !== 6 ? 0.5 : 1 }}
                 >
-                  {loading ? "Signing inâ€¦" : "Sign In â†’"}
+                  {loading ? "Signing in&hellip;" : "Sign In &#x2192;"}
                 </button>
 
                 <button
@@ -214,12 +213,12 @@ export default function SignInPage() {
                   onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
                   onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.3)")}
                 >
-                  â† Change email
+                  &#x2190; Change email
                 </button>
               </form>
 
               <p className="text-xs text-center mt-4" style={{ color: "rgba(255,255,255,0.15)" }}>
-                Code valid for 10 minutes Â· Check spam folder
+                Code valid for 10 minutes &middot; Check spam folder
               </p>
             </>
           )}
@@ -227,12 +226,10 @@ export default function SignInPage() {
 
         <p className="text-center mt-4">
           <Link href="/" className="text-sm" style={{ color: "rgba(255,255,255,0.25)" }}>
-            â† Back to home
+            &#x2190; Back to home
           </Link>
         </p>
       </div>
     </div>
   );
 }
-
-
