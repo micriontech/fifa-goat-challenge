@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     await storeOTP(email, otp, { name, phone: user[3] || "", goatPick: user[4] || "" });
 
     const { data, error } = await resend.emails.send({
-      from: "FIFAWCPREDICT <onboarding@resend.dev>",
+      from: "FIFAWCPREDICT <noreply@fifawcpredict.com>",
       to: email,
       subject: "Your FIFAWCPREDICT sign-in code",
       html: `

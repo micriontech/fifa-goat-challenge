@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     const { Resend } = await import("resend");
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
-      from: "FIFAWCPREDICT <onboarding@resend.dev>",
+      from: "FIFAWCPREDICT <noreply@fifawcpredict.com>",
       to: email,
       subject: "Your FIFAWCPREDICT verification code",
       html: `<div style="font-family:sans-serif;padding:32px;background:#0a0a1a;color:#fff;border-radius:12px;max-width:480px">

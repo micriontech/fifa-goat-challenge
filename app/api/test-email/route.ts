@@ -10,7 +10,7 @@ export async function GET() {
   console.log("[TEST-EMAIL] Key prefix:", process.env.RESEND_API_KEY?.slice(0, 8));
 
   const { data, error } = await resend.emails.send({
-    from: "FIFAWCPREDICT <onboarding@resend.dev>",
+    from: "FIFAWCPREDICT <noreply@fifawcpredict.com>",
     to: "micriontechnology@gmail.com",
     subject: "FIFAWCPREDICT — connection test",
     html: "<p>Resend connection is working correctly.</p>",
