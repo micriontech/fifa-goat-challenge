@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -10,11 +10,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "FIFAWCPREDICT â€” FIFA 2026 GOAT Challenge",
-  description: "Vote in the ultimate 1v1 football GOAT showdown. 20 legends vs active stars â€” who rules football history? Track FIFA 2026 World Cup fixtures.",
+  title: "FIFAWCPREDICT - FIFA 2026 GOAT Challenge",
+  description: "Vote in the ultimate 1v1 football GOAT showdown. 20 legends vs active stars - who rules football history? Track FIFA 2026 World Cup fixtures.",
   metadataBase: new URL("https://fifawcpredict.com"),
   openGraph: {
-    title: "FIFAWCPREDICT â€” FIFA 2026 GOAT Challenge",
+    title: "FIFAWCPREDICT - FIFA 2026 GOAT Challenge",
     description: "Who is the football GOAT? Vote now and track FIFA 2026 World Cup fixtures.",
     url: "https://fifawcpredict.com",
     siteName: "FIFAWCPREDICT",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FIFAWCPREDICT â€” FIFA 2026 GOAT Challenge",
+    title: "FIFAWCPREDICT - FIFA 2026 GOAT Challenge",
     description: "Who is the football GOAT? Vote now.",
   },
 };
@@ -41,4 +41,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
