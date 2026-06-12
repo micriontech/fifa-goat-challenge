@@ -55,7 +55,7 @@ export function GamePlayerCard({
       onClick={onClick}
       className={isSelected ? "picked-flash" : ""}
       style={{
-        width: 200,
+        width: "min(82vw, 320px)",
         background: "rgba(255,255,255,0.05)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
@@ -91,7 +91,7 @@ export function GamePlayerCard({
       }}
     >
       {/* Card image â€” fills top portion */}
-      <div style={{ position: "relative", width: "100%", height: 260 }}>
+      <div style={{ position: “relative”, width: “100%”, height: “min(82vw, 300px)” }}>
         <Image
           src={player.imagePath}
           alt={player.name}

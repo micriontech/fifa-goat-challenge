@@ -163,7 +163,7 @@ export default function GOATGame({ onComplete }: GOATGameProps) {
       </p>
 
       {/* VS layout */}
-      <div className="flex items-center justify-center gap-4 sm:gap-6 w-full flex-wrap sm:flex-nowrap">
+      <div className="flex flex-col items-center justify-center gap-3 w-full">
 
         {/* Champion — flips from left when the winner changes */}
         <div key={`champ-${champFlipKey}`} className="card-flip-left">
