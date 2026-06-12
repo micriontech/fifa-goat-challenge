@@ -1,8 +1,7 @@
-﻿"use client";
+"use client";
 import Image from "next/image";
 import { Player } from "@/lib/players";
 
-/* â”€â”€ Small circular avatar (leaderboard / crowning) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export function AvatarCircle({ player, size = 64 }: { player: Player; size?: number }) {
   return (
     <div
@@ -28,7 +27,6 @@ export function AvatarCircle({ player, size = 64 }: { player: Player; size?: num
   );
 }
 
-/* â”€â”€ Game 1v1 card â€” full card image, 200px wide â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export function GamePlayerCard({
   player,
   isChampion,
@@ -90,17 +88,15 @@ export function GamePlayerCard({
         }
       }}
     >
-      {/* Card image â€” fills top portion */}
-      <div style={{ position: “relative”, width: “100%”, height: “min(82vw, 300px)” }}>
+      <div style={{ position: "relative", width: "100%", height: "min(82vw, 300px)" }}>
         <Image
           src={player.imagePath}
           alt={player.name}
           fill
-          sizes="200px"
+          sizes="320px"
           style={{ objectFit: "cover", objectPosition: "top center" }}
           priority
         />
-        {/* subtle gradient fade at bottom of image */}
         <div
           style={{
             position: "absolute",
@@ -113,18 +109,17 @@ export function GamePlayerCard({
         />
       </div>
 
-      {/* Name / country strip */}
       <div
         style={{
-          padding: "10px 12px 12px",
+          padding: "10px 12px 14px",
           textAlign: "center",
           background: "rgba(10,5,30,0.85)",
         }}
       >
-        <div style={{ fontWeight: 800, fontSize: 15, color: "#fff", lineHeight: 1.2 }}>
+        <div style={{ fontWeight: 800, fontSize: 16, color: "#fff", lineHeight: 1.2 }}>
           {player.name}
         </div>
-        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>
+        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", marginTop: 3 }}>
           {player.flag} {player.country}
         </div>
       </div>
@@ -132,9 +127,6 @@ export function GamePlayerCard({
   );
 }
 
-/* â”€â”€ Leaderboard avatar (alias) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export function LeaderboardAvatar({ player }: { player: Player }) {
   return <AvatarCircle player={player} size={44} />;
 }
-
-
