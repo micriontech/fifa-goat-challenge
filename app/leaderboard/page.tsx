@@ -148,8 +148,9 @@ function ShareModal({ onClose, userPickPlayer }: {
 }) {
   const appUrl = typeof window !== "undefined" ? window.location.origin : "https://fifawcpredict.com";
   const playerName = userPickPlayer?.name || "";
+  const shareUrl = userPickPlayer ? `${appUrl}/share/${userPickPlayer.id}` : `${appUrl}/`;
   const shareText = playerName
-    ? `🏆 My FIFA GOAT is '${playerName}'!\n\nWho is YOUR FIFA GOAT?\nJoin The Challenge 👉 ${appUrl}/`
+    ? `🏆 My FIFA GOAT is '${playerName}'!\n\nWho is YOUR FIFA GOAT?\nJoin The Challenge 👉 ${shareUrl}`
     : `⚽ Who is YOUR FIFA GOAT?\nJoin The Challenge 👉 ${appUrl}/`;
 
   const [generating, setGenerating] = useState(false);
@@ -206,7 +207,7 @@ function ShareModal({ onClose, userPickPlayer }: {
     } catch { /* dismissed */ }
   }
 
-  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(appUrl)}&quote=${encodeURIComponent(shareText)}`;
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
   const twitterUrl  = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
 
   return (
